@@ -593,3 +593,264 @@ int main() {
     return 0;
 }
 
+
+//traversal all
+#include <iostream>
+using namespace std;
+
+// TreeNode definition
+struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+// Function to insert a node in the binary search tree
+TreeNode* insert(TreeNode* root, int value) {
+    if (root == nullptr) {
+        return new TreeNode(value);
+    }
+
+    if (value < root->data) {
+        root->left = insert(root->left, value);
+    } else {
+        root->right = insert(root->right, value);
+    }
+
+    return root;
+}
+
+// Inorder traversal
+void inorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+
+// Preorder traversal
+void preorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+
+// Postorder traversal
+void postorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout << root->data << " ";
+}
+
+
+int main() {
+    TreeNode* root = nullptr;
+
+    // Insert nodes
+    root = insert(root, 5);
+    insert(root, 3);
+    insert(root, 7);
+    insert(root, 2);
+    insert(root, 4);
+    insert(root, 6);
+    insert(root, 8);
+
+    cout << "Inorder Traversal: ";
+    inorderTraversal(root);
+    cout << endl;
+
+    cout << "Preorder Traversal: ";
+    preorderTraversal(root);
+    cout << endl;
+
+    cout << "Postorder Traversal: ";
+    postorderTraversal(root);
+    cout << endl;
+
+    return 0;
+}
+
+//BST
+#include <iostream>
+using namespace std;
+
+struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+TreeNode* insert(TreeNode* root, int value) {
+    if (root == nullptr) {
+        return new TreeNode(value);
+    }
+
+    if (value < root->data) {
+        root->left = insert(root->left, value);
+    } else {
+        root->right = insert(root->right, value);
+    }
+
+    return root;
+}
+
+void inorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+
+void preorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+
+void postorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout << root->data << " ";
+}
+
+int main() {
+    TreeNode* root = nullptr;
+
+    root = insert(root, 5);
+    insert(root, 3);
+    insert(root, 7);
+    insert(root, 2);
+    insert(root, 4);
+    insert(root, 6);
+    insert(root, 8);
+
+    cout << "Inorder Traversal: ";
+    inorderTraversal(root);
+    cout << endl;
+
+    cout << "Preorder Traversal: ";
+    preorderTraversal(root);
+    cout << endl;
+
+    cout << "Postorder Traversal: ";
+    postorderTraversal(root);
+    cout << endl;
+
+    return 0;
+}
+
+//searching inorder
+#include <iostream>
+using namespace std;
+
+struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+TreeNode* insert(TreeNode* root, int value) {
+    if (root == nullptr) {
+        return new TreeNode(value);
+    }
+
+    if (value < root->data) {
+        root->left = insert(root->left, value);
+    } else {
+        root->right = insert(root->right, value);
+    }
+
+    return root;
+}
+
+void inorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+
+void preorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+
+void postorderTraversal(TreeNode* root) {
+    if (root == nullptr) return;
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout << root->data << " ";
+}
+
+bool search(TreeNode* root, int value) {
+    if (root == nullptr) {
+        return false;
+    }
+
+    if (root->data == value) {
+        return true;
+    } else if (value < root->data) {
+        return search(root->left, value);
+    } else {
+        return search(root->right, value);
+    }
+}
+
+int main() {
+    TreeNode* root = nullptr;
+
+    root = insert(root, 5);
+    insert(root, 3);
+    insert(root, 7);
+    insert(root, 2);
+    insert(root, 4);
+    insert(root, 6);
+    insert(root, 8);
+
+    cout << "Inorder Traversal (Sorted): ";
+    inorderTraversal(root);
+    cout << endl;
+
+    cout << "Preorder Traversal: ";
+    preorderTraversal(root);
+    cout << endl;
+
+    cout << "Postorder Traversal: ";
+    postorderTraversal(root);
+    cout << endl;
+
+    int valueToSearch = 4;
+    if (search(root, valueToSearch)) {
+        cout << "Value " << valueToSearch << " found in the tree." << endl;
+    } else {
+        cout << "Value " << valueToSearch << " not found in the tree." << endl;
+    }
+
+    return 0;
+}
+
+
